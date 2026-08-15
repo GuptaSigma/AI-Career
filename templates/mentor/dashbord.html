@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard - AI Career Mentor{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h1>Welcome back, {{ user.first_name|default:user.username }}!</h1>
+        <p>Here's your AI-powered career guidance dashboard</p>
+    </div>
+
+    <div class="dashboard-grid">
+        <!-- Progress Card -->
+        <div class="dashboard-card progress-card">
+            <div class="card-header">
+                <h3>Career Progress</h3>
+                <span class="badge">85%</span>
+            </div>
+            <div class="progress-circle">
+                <svg viewBox="0 0 100 100" class="circular-progress">
+                    <circle cx="50" cy="50" r="45" class="progress-background"></circle>
+                    <circle cx="50" cy="50" r="45" class="progress-bar" 
+                            style="stroke-dashoffset: calc(282.6 * (1 - 0.85))"></circle>
+                </svg>
+                <div class="progress-text">
+                    <span class="progress-value">85%</span>
+                    <span class="progress-label">Complete</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Goals -->
+        <div class="dashboard-card goals-card">
+            <div class="card-header">
+                <h3>Active Goals</h3>
+                <a href="#" class="view-all">View All</a>
+            </div>
+            <div class="goals-list">
+                <div class="goal-item">
+                    <div class="goal-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="goal-content">
+                        <h4>Master Python</h4>
+                        <p>Complete by Dec 2024</p>
+                        <div class="mini-progress">
+                            <div class="mini-progress-bar" style="width: 65%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="goal-item">
+                    <div class="goal-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="goal-content">
+                        <h4>Data Science Fundamentals</h4>
+                        <p>Complete by Jan 2025</p>
+                        <div class="mini-progress">
+                            <div class="mini-progress-bar" style="width: 45%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="goal-item">
+                    <div class="goal-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="goal-content">
+                        <h4>Web Development Skills</h4>
+                        <p>Complete by Feb 2025</p>
+                        <div class="mini-progress">
+                            <div class="mini-progress-bar" style="width: 30%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Recommendations -->
+        <div class="dashboard-card recommendations-card">
+            <div class="card-header">
+                <h3>AI Recommendations</h3>
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="recommendations-list">
+                <div class="recommendation-item">
+                    <div class="recommendation-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="recommendation-content">
+                        <h4>Advanced Python Patterns</h4>
+                        <p class="recommendation-description">Based on your learning pace, we recommend diving into design patterns</p>
+                        <a href="#" class="btn btn-small">Start Learning</a>
+                    </div>
+                </div>
+                <div class="recommendation-item">
+                    <div class="recommendation-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="recommendation-content">
+                        <h4>Project-Based Learning</h4>
+                        <p class="recommendation-description">Build a real-world API to solidify your backend knowledge</p>
+                        <a href="#" class="btn btn-small">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Overview -->
+        <div class="dashboard-card skills-card">
+            <div class="card-header">
+                <h3>Top Skills</h3>
+            </div>
+            <div class="skills-cloud">
+                <span class="skill-tag level-5">Python</span>
+                <span class="skill-tag level-4">JavaScript</span>
+                <span class="skill-tag level-4">Problem Solving</span>
+                <span class="skill-tag level-3">React</span>
+                <span class="skill-tag level-3">SQL</span>
+                <span class="skill-tag level-2">DevOps</span>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="dashboard-card activity-card">
+            <div class="card-header">
+                <h3>Recent Activity</h3>
+            </div>
+            <div class="activity-list">
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="activity-content">
+                        <p><strong>Completed</strong> Python Basics Course</p>
+                        <span class="activity-time">2 days ago</span>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <div class="activity-content">
+                        <p><strong>Started</strong> Web Development Path</p>
+                        <span class="activity-time">5 days ago</span>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="activity-content">
+                        <p><strong>Achieved</strong> First Milestone Badge</p>
+                        <span class="activity-time">1 week ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="dashboard-card actions-card">
+            <div class="card-header">
+                <h3>Quick Actions</h3>
+            </div>
+            <div class="actions-grid">
+                <a href="#" class="action-btn">
+                    <i class="fas fa-plus"></i>
+                    <span>Add Goal</span>
+                </a>
+                <a href="#" class="action-btn">
+                    <i class="fas fa-comment"></i>
+                    <span>AI Chat</span>
+                </a>
+                <a href="#" class="action-btn">
+                    <i class="fas fa-path"></i>
+                    <span>Update Roadmap</span>
+                </a>
+                <a href="#" class="action-btn">
+                    <i class="fas fa-download"></i>
+                    <span>Export Report</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

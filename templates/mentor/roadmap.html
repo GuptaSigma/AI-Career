@@ -1,0 +1,294 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Career Roadmap - AI Career Mentor{% endblock %}
+
+{% block content %}
+<div class="roadmap-container">
+    <div class="roadmap-header">
+        <h1>Your Career Roadmap</h1>
+        <p>AI-generated personalized learning path</p>
+        <div class="roadmap-controls">
+            <button class="btn btn-secondary" onclick="toggleView('timeline')">
+                <i class="fas fa-timeline"></i> Timeline
+            </button>
+            <button class="btn btn-secondary" onclick="toggleView('kanban')">
+                <i class="fas fa-kanban"></i> Kanban
+            </button>
+            <button class="btn btn-primary" onclick="editRoadmap()">
+                <i class="fas fa-edit"></i> Edit
+            </button>
+        </div>
+    </div>
+
+    <div id="timelineView" class="roadmap-view active">
+        <div class="timeline">
+            <!-- Phase 1: Foundation -->
+            <div class="timeline-item">
+                <div class="timeline-marker completed">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>Phase 1: Foundation</h3>
+                    <p class="timeline-date">Completed - Dec 2024</p>
+                    <div class="milestone-list">
+                        <div class="milestone completed">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Learn Python Basics</span>
+                        </div>
+                        <div class="milestone completed">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Git & Version Control</span>
+                        </div>
+                        <div class="milestone completed">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Problem Solving</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 2: Core Skills -->
+            <div class="timeline-item">
+                <div class="timeline-marker in-progress">
+                    <i class="fas fa-hourglass-half"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>Phase 2: Core Skills</h3>
+                    <p class="timeline-date">In Progress - Jan 2025</p>
+                    <div class="milestone-list">
+                        <div class="milestone completed">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Data Structures</span>
+                        </div>
+                        <div class="milestone in-progress">
+                            <i class="fas fa-spinner"></i>
+                            <span>Algorithms</span>
+                        </div>
+                        <div class="milestone pending">
+                            <i class="fas fa-circle"></i>
+                            <span>Web Development Basics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 3: Specialization -->
+            <div class="timeline-item">
+                <div class="timeline-marker pending">
+                    <i class="fas fa-circle"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>Phase 3: Specialization</h3>
+                    <p class="timeline-date">Feb 2025</p>
+                    <div class="milestone-list">
+                        <div class="milestone pending">
+                            <i class="fas fa-circle"></i>
+                            <span>Full Stack Development</span>
+                        </div>
+                        <div class="milestone pending">
+                            <i class="fas fa-circle"></i>
+                            <span>Database Design</span>
+                        </div>
+                        <div class="milestone pending">
+                            <i class="fas fa-circle"></i>
+                            <span>API Development</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 4: Advanced Topics -->
+            <div class="timeline-item">
+                <div class="timeline-marker pending">
+                    <i class="fas fa-circle"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>Phase 4: Advanced Topics</h3>
+                    <p class="timeline-date">Mar - Apr 2025</p>
+                    <div class="milestone-list">
+                        <div class="milestone pending">
+                            <i class="fas fa-circle"></i>
+                            <span>System Design</span>
+                        </div>
+                        <div class="milestone pending">
+                            <i class="fas fa-circle"></i>
+                            <span>Cloud Computing</span>
+                        </div>
+                        <div class="milestone pending">
+                            <i class="fas fa-circle"></i>
+                            <span>DevOps Essentials</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 5: Portfolio & Job Ready -->
+            <div class="timeline-item">
+                <div class="timeline-marker pending">
+                    <i class="fas fa-circle"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>Phase 5: Portfolio & Job Ready</h3>
+                    <p class="timeline-date">May 2025</p>
+                    <div class="milestone-list">
+                        <div class="milestone pending">
+                            <i class="fas fa-circle"></i>
+                            <span>Build Portfolio Projects</span>
+                        </div>
+                        <div class="milestone pending">
+                            <i class="fas fa-circle"></i>
+                            <span>Interview Preparation</span>
+                        </div>
+                        <div class="milestone pending">
+                            <i class="fas fa-circle"></i>
+                            <span>Job Search Strategy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="kanbanView" class="roadmap-view">
+        <div class="kanban-board">
+            <!-- Not Started Column -->
+            <div class="kanban-column">
+                <div class="column-header">
+                    <h3>Not Started</h3>
+                    <span class="column-count">8</span>
+                </div>
+                <div class="card-list">
+                    <div class="card-item">
+                        <div class="card-tag">Phase 3</div>
+                        <h4>Full Stack Development</h4>
+                        <p class="card-description">Learn front-end and back-end integration</p>
+                        <div class="card-footer">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="duration">6 weeks</span>
+                        </div>
+                    </div>
+                    <div class="card-item">
+                        <div class="card-tag">Phase 4</div>
+                        <h4>System Design</h4>
+                        <p class="card-description">Design scalable systems</p>
+                        <div class="card-footer">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="duration">4 weeks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- In Progress Column -->
+            <div class="kanban-column">
+                <div class="column-header">
+                    <h3>In Progress</h3>
+                    <span class="column-count">2</span>
+                </div>
+                <div class="card-list">
+                    <div class="card-item active">
+                        <div class="card-tag">Phase 2</div>
+                        <h4>Algorithms</h4>
+                        <p class="card-description">Master sorting and searching algorithms</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 60%"></div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="duration">2 weeks left</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Completed Column -->
+            <div class="kanban-column">
+                <div class="column-header">
+                    <h3>Completed</h3>
+                    <span class="column-count">5</span>
+                </div>
+                <div class="card-list">
+                    <div class="card-item completed">
+                        <div class="card-tag">Phase 1</div>
+                        <h4>Python Basics</h4>
+                        <p class="card-description">Fundamentals of Python programming</p>
+                        <div class="card-footer">
+                            <span class="difficulty easy">Easy</span>
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="card-item completed">
+                        <div class="card-tag">Phase 1</div>
+                        <h4>Git & Version Control</h4>
+                        <p class="card-description">Learn Git workflows and collaboration</p>
+                        <div class="card-footer">
+                            <span class="difficulty easy">Easy</span>
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Roadmap Statistics -->
+    <div class="roadmap-stats">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-fire"></i>
+            </div>
+            <div class="stat-info">
+                <h4>Streak</h4>
+                <p>15 days</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-check-double"></i>
+            </div>
+            <div class="stat-info">
+                <h4>Completed</h4>
+                <p>5 / 20 items</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-clock"></i>
+            </div>
+            <div class="stat-info">
+                <h4>Time Estimate</h4>
+                <p>4 months remaining</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="stat-info">
+                <h4>Progress</h4>
+                <p>25% complete</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleView(view) {
+    const timelineView = document.getElementById('timelineView');
+    const kanbanView = document.getElementById('kanbanView');
+    
+    if (view === 'timeline') {
+        timelineView.classList.add('active');
+        kanbanView.classList.remove('active');
+    } else {
+        kanbanView.classList.add('active');
+        timelineView.classList.remove('active');
+    }
+}
+
+function editRoadmap() {
+    alert('Edit roadmap functionality coming soon!');
+}
+</script>
+{% endblock %}

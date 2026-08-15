@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Profile - AI Career Mentor{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-header">
+        <h1>My Profile</h1>
+    </div>
+
+    <div class="profile-content">
+        <div class="profile-sidebar">
+            <div class="profile-avatar">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <h2>{{ user.username }}</h2>
+            <p class="profile-email">{{ user.email }}</p>
+            <div class="profile-stats">
+                <div class="stat">
+                    <span class="stat-value">12</span>
+                    <span class="stat-label">Skills</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">5</span>
+                    <span class="stat-label">Goals</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">85%</span>
+                    <span class="stat-label">Progress</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-main">
+            <div class="profile-card">
+                <h3>Personal Information</h3>
+                <form method="POST" class="profile-form">
+                    {% csrf_token %}
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input 
+                                type="text" 
+                                id="firstName" 
+                                name="first_name" 
+                                class="form-control"
+                                value="{{ user.first_name }}"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input 
+                                type="text" 
+                                id="lastName" 
+                                name="last_name" 
+                                class="form-control"
+                                value="{{ user.last_name }}"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-control"
+                            value="{{ user.email }}"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bio">Professional Bio</label>
+                        <textarea 
+                            id="bio" 
+                            name="bio" 
+                            class="form-control" 
+                            rows="4"
+                            placeholder="Tell us about yourself"
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="specialty">Career Specialty</label>
+                        <select id="specialty" name="specialty" class="form-control">
+                            <option value="">Select a specialty</option>
+                            <option value="web">Web Development</option>
+                            <option value="mobile">Mobile Development</option>
+                            <option value="data">Data Science</option>
+                            <option value="ai">Artificial Intelligence</option>
+                            <option value="cloud">Cloud Engineering</option>
+                            <option value="devops">DevOps</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+            </div>
+
+            <div class="profile-card">
+                <h3>Skills & Expertise</h3>
+                <div class="skills-section">
+                    <div class="skill-item">
+                        <span>Python</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Web Development</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Data Analysis</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-card">
+                <h3>Account Settings</h3>
+                <div class="settings-section">
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4>Change Password</h4>
+                            <p>Update your password to keep your account secure</p>
+                        </div>
+                        <a href="/accounts/change-password" class="btn btn-secondary">Change</a>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4>Email Notifications</h4>
+                            <p>Manage your notification preferences</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4>Delete Account</h4>
+                            <p>Permanently delete your account and data</p>
+                        </div>
+                        <a href="/accounts/delete-account" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
